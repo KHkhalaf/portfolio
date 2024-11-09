@@ -1,4 +1,4 @@
-package com.example.portfolio.model;
+package com.example.portfolio.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -23,13 +23,24 @@ public class Experience implements Serializable {
     private String companyName;
 
     @Column(name = "experience_years")
-    private Long experienceYears;
+    private Integer experienceYears;
 
     @Column(name = "start_date")
     private LocalDateTime startDate;
 
     @Column(name = "end_date")
     private LocalDateTime endDate;
+
+    public Experience(String companyName, Integer experienceYears, LocalDateTime startDate, LocalDateTime endDate, Set<Profile> profiles) {
+        this.companyName = companyName;
+        this.experienceYears = experienceYears;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.profiles = profiles;
+    }
+
+    public Experience() {
+    }
 
     @JsonIgnore
     @ToString.Exclude
