@@ -5,7 +5,7 @@ import com.example.portfolio.repositories.ExperienceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,9 +19,9 @@ public class ExperienceService {
         if(!experiences.isEmpty())
             return repo.findAll();
 
-        int year = 2015, month = 2, dayOfMonth = 5, hour = 0, min = 0, sec = 0;
-        LocalDateTime startDate = LocalDateTime.of(year, month, dayOfMonth, hour, min, sec);
-        LocalDateTime endDate = LocalDateTime.of(year + 3,month + 4, dayOfMonth, hour, min, sec);
+        int year = 2015, month = 2, dayOfMonth = 5;
+        LocalDate startDate = LocalDate.of(year, month, dayOfMonth);
+        LocalDate endDate = LocalDate.of(year + 3,month + 4, dayOfMonth);
 
         experiences.add(new Experience("amazon", 3, startDate, endDate, null));
         experiences.add(new Experience("dubai mall", 1, startDate.plusYears(1), endDate.plusYears(2), null));

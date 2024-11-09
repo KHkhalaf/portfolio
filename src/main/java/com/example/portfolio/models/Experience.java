@@ -7,7 +7,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
@@ -26,12 +26,12 @@ public class Experience implements Serializable {
     private Integer experienceYears;
 
     @Column(name = "start_date")
-    private LocalDateTime startDate;
+    private LocalDate startDate;
 
     @Column(name = "end_date")
-    private LocalDateTime endDate;
+    private LocalDate endDate;
 
-    public Experience(String companyName, Integer experienceYears, LocalDateTime startDate, LocalDateTime endDate, Set<Profile> profiles) {
+    public Experience(String companyName, Integer experienceYears, LocalDate startDate, LocalDate endDate, Set<Profile> profiles) {
         this.companyName = companyName;
         this.experienceYears = experienceYears;
         this.startDate = startDate;
