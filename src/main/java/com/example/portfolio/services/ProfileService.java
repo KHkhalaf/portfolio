@@ -25,21 +25,10 @@ public class ProfileService {
 
         Profile profile = new Profile("Tanja", "tanja.müller99@gmail.com",
                 "hhtps://img.profile.de/tanja-mueller", Helper.hashingPassword("mypass12"), true);
-        Set<Experience> experiences = new HashSet<>();
-        Experience experience = experienceService.getExperienceById(1L);
-        experiences.add(experience);
-        profile.setExperiences(experiences);
-
         profiles.add(profile);
 
         profile = new Profile("tomas", "tomas.fabian@gmail.com",
                 "hhtps://img.profile.de/tomas-fabian", Helper.hashingPassword("mypaassword41"), true);
-        experiences = new HashSet<>();
-        experience = experienceService.getExperienceById(2L);
-        experiences.add(experience);
-        experience = experienceService.getExperienceById(1L);
-        experiences.add(experience);
-        profile.setExperiences(experiences);
         profiles.add(profile);
 
         return this.profileRepository.saveAll(profiles);
@@ -48,5 +37,9 @@ public class ProfileService {
     public Profile getProfileById(Long id) throws ResourceNotFoundException{
         Optional<Profile> result = profileRepository.findById(id);
         return result.orElseThrow(() -> new ResourceNotFoundException("this element isn't exist !"));
+    }
+
+    public Profile addProfile(Profile profile){
+        return this.profileRepository.save(profile);
     }
 }

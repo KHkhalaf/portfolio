@@ -1,5 +1,6 @@
 package com.example.portfolio.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NonNull;
@@ -35,6 +36,7 @@ public class Profile implements Serializable {
     private Boolean isVerified;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnore
     @JoinTable(name = "profile_experience",
                 joinColumns = {@JoinColumn(name = "profileId", referencedColumnName = "id")},
                 inverseJoinColumns = {@JoinColumn(name = "experienceId", referencedColumnName = "id")})
@@ -49,5 +51,9 @@ public class Profile implements Serializable {
     }
 
     public Profile() {
+    }
+
+    public void addExperience(Experience experience){
+        this.experiences.add(experience);
     }
 }
