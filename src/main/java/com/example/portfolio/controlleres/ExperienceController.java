@@ -21,7 +21,8 @@ public class ExperienceController {
     @RequestMapping("/add-all")
     public ResponseEntity<List<Experience>> addExperiences(){
 
-        return ResponseEntity.ok(experienceService.saveAll());
+        List<Experience> result = experienceService.saveAll();
+        return ResponseEntity.ok(result);
     }
 
     @RequestMapping("/get/{id}")

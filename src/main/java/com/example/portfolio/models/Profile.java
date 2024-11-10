@@ -40,4 +40,14 @@ public class Profile implements Serializable {
                 inverseJoinColumns = {@JoinColumn(name = "experienceId", referencedColumnName = "id")})
     private Set<Experience> experiences;
 
+    public Profile(@NonNull String name, String email, String imageUrl, String hashedPassword, @NonNull Boolean isVerified) {
+        this.name = name;
+        this.email = email;
+        this.imageUrl = imageUrl;
+        this.hashedPassword = hashedPassword;
+        this.isVerified = isVerified;
+    }
+
+    public Profile() {
+    }
 }

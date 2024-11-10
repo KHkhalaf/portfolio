@@ -31,6 +31,9 @@ public class Experience implements Serializable {
     @Column(name = "end_date")
     private LocalDate endDate;
 
+    @ManyToMany(mappedBy = "experiences", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Profile> profiles;
+
     public Experience(String companyName, Integer experienceYears, LocalDate startDate, LocalDate endDate, Set<Profile> profiles) {
         this.companyName = companyName;
         this.experienceYears = experienceYears;
@@ -42,8 +45,4 @@ public class Experience implements Serializable {
     public Experience() {
     }
 
-    @JsonIgnore
-    @ToString.Exclude
-    @ManyToMany(mappedBy = "experiences", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Profile> profiles;
 }

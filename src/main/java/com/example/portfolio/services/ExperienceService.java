@@ -29,9 +29,7 @@ public class ExperienceService {
         experiences.add(new Experience("amazon", 3, startDate, endDate, null));
         experiences.add(new Experience("dubai mall", 1, startDate.plusYears(1), endDate.plusYears(2), null));
 
-        this.repo.saveAll(experiences);
-
-        return experiences;
+        return this.repo.saveAll(experiences);
     }
 
     public Experience getExperienceById(Long id) throws ResourceNotFoundException{
