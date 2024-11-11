@@ -15,8 +15,6 @@ public class ProfileService {
 
     @Autowired
     private ProfileRepository profileRepository;
-    @Autowired
-    private ExperienceService experienceService;
 
     public List<Profile> saveAll() throws ResourceNotFoundException {
         List<Profile> profiles = this.profileRepository.findAll();
